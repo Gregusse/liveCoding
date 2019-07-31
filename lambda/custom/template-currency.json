@@ -1,0 +1,85 @@
+{
+    "type": "APL",
+    "version": "1.1",
+    "theme": "dark",
+    "import": [],
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": [
+            {
+                "type": "Container",
+                "width": "100%",
+                "height": "100%",
+                "alignItems": "center",
+                "items": [{
+                        "type": "Text",
+                        "width": "300dp",
+                        "height": "48dp",
+                        "paddingTop": "12dp",
+                        "paddingBottom": "12dp",
+                        "textAlign": "center",
+                        "fontSize": "32dp",
+                        "text": "${payload.data.textPrimary}"
+                    },
+                    {
+                        "type": "Text",
+                        "width": "300dp",
+                        "height": "32dp",
+                        "paddingTop": "12dp",
+                        "paddingBottom": "12dp",
+                        "textAlign": "center",
+                        "fontSize": "16dp",
+                        "text": "en ${payload.data.textSecondary}"
+                    },
+                    {
+                        "type": "Text",
+                        "id": "myAnimate",
+                        "width": "300dp",
+                        "height": "32dp",
+                        "opacity": 0,
+                        "paddingTop": "12dp",
+                        "paddingBottom": "12dp",
+                        "textAlign": "center",
+                        "fontSize": "16dp",
+                        "text": "${payload.data.amount}"
+                    }
+                ]
+            }
+        ]
+    },
+    "settings": {},
+    "resources": [],
+    "styles": {},
+    "onMount": [{
+        "type": "AnimateItem",
+        "easing": "ease-in-out",
+        "duration": 5000,
+        "componentId": "myAnimate",
+        "value": [
+            {
+                "property": "opacity",
+                "to": 1
+            },
+            {
+                "property": "transform",
+                "from": [
+                    {
+                        "scale": 0
+                    }
+                ],
+                "to": [
+                    {
+                        "scale": 4
+                    }
+                ]
+            }
+        ]
+    }],
+    "graphics": {},
+    "commands": [
+        
+    ],
+    "layouts": {}
+}

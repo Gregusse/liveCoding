@@ -1,0 +1,158 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "meetup paris",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "CurrencyIntent",
+          "slots": [
+            {
+              "name": "amount",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "initCurrency",
+              "type": "Currency",
+              "samples": [
+                "{initCurrency}"
+              ]
+            },
+            {
+              "name": "finalCurrency",
+              "type": "Currency",
+              "samples": [
+                "{finalCurrency}"
+              ]
+            }
+          ],
+          "samples": [
+            "Donne-moi la conversion de {amount} en {finalCurrency}",
+            "Quelle est la conversion de {amount}",
+            "Quelle est la conversion de {amount} {initCurrency} en {finalCurrency}"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "id": "GBP",
+              "name": {
+                "value": "Livre Sterling",
+                "synonyms": [
+                  "livre"
+                ]
+              }
+            },
+            {
+              "id": "CHF",
+              "name": {
+                "value": "Franc Suisse"
+              }
+            },
+            {
+              "id": "AUD",
+              "name": {
+                "value": "Dollar Australian "
+              }
+            },
+            {
+              "id": "EUR",
+              "name": {
+                "value": "Euro"
+              }
+            },
+            {
+              "id": "CAD",
+              "name": {
+                "value": "Dollar Canadian"
+              }
+            },
+            {
+              "id": "USD",
+              "name": {
+                "value": "Us Dollar"
+              }
+            }
+          ],
+          "name": "Currency"
+        }
+      ]
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "CurrencyIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "amount",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {}
+            },
+            {
+              "name": "initCurrency",
+              "type": "Currency",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.847431514235.257455241780"
+              }
+            },
+            {
+              "name": "finalCurrency",
+              "type": "Currency",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.847431514235.199472484962"
+              }
+            }
+          ],
+          "delegationStrategy": "ALWAYS"
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.847431514235.257455241780",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Quelle est la devise de départ"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.847431514235.199472484962",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Quelle est la devise de conversion"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "12"
+}

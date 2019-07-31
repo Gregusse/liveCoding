@@ -2,14 +2,14 @@
   "manifest": {
     "publishingInformation": {
       "locales": {
-        "en-US": {
+        "fr-FR": {
           "summary": "Sample Short Description",
           "examplePhrases": [
             "Alexa open hello world",
             "hello",
             "help"
           ],
-          "name": "Hello World",
+          "name": "amazon paris",
           "description": "Sample Full Description"
         }
       },
@@ -22,7 +22,7 @@
       "custom": {
         "endpoint": {
           "sourceDir": "lambda/custom",
-          "uri": "ask-custom-helloworld-default"
+          "uri": "ask-custom-amazon_paris-default"
         }
       }
     },
