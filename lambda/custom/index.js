@@ -5,6 +5,14 @@ const Alexa = require('ask-sdk-core');
 const axios = require('axios');
 const Decimal = require('decimal.js');
 
+const currencySymbols = {
+    GBP: {symbol: '£', before: true},
+    CHF: {symbol: 'CHF', before: false},
+    EUR: {symbol: '€', before: false},
+    CAD: {symbol: '$', before: true},
+    USD: {symbol: '$', before: true}, 
+}
+
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
@@ -55,7 +63,7 @@ const CurrencyIntentHandler = {
                 datasources: {
                     "data": {
                         "textPrimary": `${amount} ${slotValues.initCurrency.resolved}`,
-                        "amount": `${(a*b).toFixed(2)}`,
+                        "amount": formattedCurrencyString(finalCurrency, (a*b).toFixed(2)),
                         "textSecondary": `${slotValues.finalCurrency.resolved}`
                     }
                 }
@@ -206,6 +214,11 @@ const getRate = async (base, finalCurrency) => {
     }
 }
 
+function formattedCurrencyString (currency, amount) {
+
+    return currencySymbols[currency].before ? `${currencySymbols[currency].symbol}${amount}` : `${amount} ${currencySymbols[currency].symbol}`;
+
+}
 // The SkillBuilder acts as the entry point for your skill, routing all request and response
 // payloads to the handlers above. Make sure any new handlers or interceptors you've
 // defined are included below. The order matters - they're processed top to bottom.
@@ -222,4 +235,4 @@ exports.handler = Alexa.SkillBuilders.custom()
         ErrorHandler,
         )
         .lambda();
-        
+         

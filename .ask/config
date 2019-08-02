@@ -18,7 +18,7 @@
             "codeUri": "lambda/custom",
             "functionName": "ask-custom-amazon_paris-default",
             "handler": "index.handler",
-            "revisionId": "b2f0ade9-f518-4bcd-b4a3-9be8d1dca38e",
+            "revisionId": "f7c7bbf3-4e34-454b-89fe-c5557c5f7bbf",
             "runtime": "nodejs8.10"
           }
         ],
